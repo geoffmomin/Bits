@@ -1,0 +1,4 @@
+<?php
+{% for name,value in parameters %}
+$container->setParameter('{{ name }}', {{ value|raw }});
+{% endfor %}

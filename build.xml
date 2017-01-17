@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PartKeepr" default="regenerate-environment">
+    <property name="env" value="prod"/>
+    <property name="console" value="app/console"/>
+    <property file="build.properties"/>
+
+    <target name="regenerate-environment">
+        <exec command="php ${console} cache:clear --env=${env}"/>
+        <exec command="php ${console} cache:warmup --env=${env}"/>
+        <exec command="php ${console} nfq:sprite:generate --env=${env}"/>
+        <exec command="php ${console} assets:install --env=${env}"/>
+        <exec command="php ${console} generate:extjs:entities --env=${env}"/>
+        <exec command="php ${console} assetic:dump --env=${env}"/>
+    </target>
+
+    <target name="release">
+        <propertyprompt propertyName="partkeepr.version" useExistingValue="true" defaultValue=""
+                        promptText="Please enter the version number of the build to generate (e.g. 0.1)"/>
+
+        <phingcall target="prepare-archiving"/>
+        <phingcall target="set-version"/>
+
+        <delete file="partkeepr-${partkeepr.version}.tbz2"/>
+        <delete file="partkeepr-${partkeepr.version}.zip"/>
+
+        <zip destfile="partkeepr-${partkeepr.version}.zip" basedir="${packagepath}"
+             prefix="partkeepr-${partkeepr.version}/"/>
+        <tar destfile="partkeepr-${partkeepr.version}.tbz2" compression="bzip2" basedir="${packagepath}"
+             prefix="partkeepr-${partkeepr.version}/"/>
+    </target>
+
+    <!--
+    Runs the build process, then copies the current working tree to a temporary directory (specified by ${packagepath})
+    while excluding stuff the end-user doesn't need (like .git directories, and some 3rdparty stuff).
+    -->
+    <target name="prepare-archiving">
+        <copy file="app/config/parameters.php.dist" tofile="app/config/parameters.php"/>
+        <exec command="composer install" passthru="true" checkreturn="true" />
+
+        <delete file="app/config/parameters.php"/>
+
+        <delete quiet="true">
+            <fileset dir="${packagepath}"/>
+        </delete>
+
+        <copy todir="${packagepath}" includeemptydirs="false">
+            <fileset dir=".">
+                <exclude name="partkeepr*.zip"/>
+                <exclude name="partkeepr*.tbz2"/>
+                <exclude name=".git/**"/>
+                <exclude name="vendor/**/.git/"/>
+                <exclude name="web/js/packages/extjs6/modern/**"/>
+                <exclude name="web/js/packages/extjs6/classic/**"/>
+                <exclude name="web/js/packages/extjs6/cmd/**"/>
+                <exclude name="web/js/packages/extjs6/packages/amf/**"/>
+                <exclude name="web/js/packages/extjs6/packages/charts/**"/>
+                <exclude name="web/js/packages/extjs6/packages/core/**"/>
+                <exclude name="web/js/packages/extjs6/packages/font-awesome/**"/>
+                <exclude name="web/js/packages/extjs6/packages/font-ext/**"/>
+                <exclude name="web/js/packages/extjs6/packages/font-pictos/**"/>
+                <exclude name="web/js/packages/extjs6/packages/legacy/**"/>
+                <exclude name="web/js/packages/extjs6/packages/soap/**"/>
+                <exclude name="web/js/packages/extjs6/resources/**"/>
+                <exclude name="web/js/packages/extjs6/sass/**"/>
+                <exclude name="web/js/packages/extjs6/templates/**"/>
+                <exclude name="web/js/packages/extjs6/welcome/**"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <!--
+    Sets the version of the release inside PartKeeprVersion.php
+    -->
+    <target name="set-version">
+        <exec executable="sed">
+            <arg value="-i"/>
+            <arg value="s/{V_GIT}/${partkeepr.version}/g"/>
+            <arg value="${packagepath}/src/PartKeepr/CoreBundle/PartKeeprVersion.php"/>
+        </exec>
+    </target>
+
+    <target name="nightly">
+        <phingcall target="prepare-archiving"/>
+
+        <tstamp>
+            <format property="build.time" pattern="partkeepr-nightly-%Y%m%d"/>
+        </tstamp>
+
+        <property name="partkeepr.version" value="${build.time}"/>
+        <phingcall target="set-version"/>
+
+        <zip destfile="${build.time}.zip" basedir="${packagepath}" prefix="partkeepr-nightly/"/>
+        <tar destfile="${build.time}.tbz2" compression="bzip2" basedir="${packagepath}" prefix="partkeepr-nightly/"/>
+    </target>
+</project>

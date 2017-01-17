@@ -1,0 +1,108 @@
+.dataview-multisort-item {
+    float: left;
+    padding: 8px;
+    margin: 8px 8px 4px 8px;
+}
+
+.iclogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+}
+
+.x-item-selected {
+    outline: 1px solid #157fcc !important;
+    outline-offset: -1px;
+}
+
+.remote-image-background {
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.x-title-wrappable-text>div {
+    overflow: auto;
+    white-space: normal;
+    vertical-align: top;
+}
+
+.x-title-wrappable-text>div>div {
+    font-size: 20px;
+    line-height: normal;
+}
+
+.x-title-wrappable-text small {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.x-wrappable-grid .x-grid-cell-inner {
+    white-space: normal;
+}
+
+.x-form-reload-trigger {
+    background-image: url(../images/form/reload-trigger.png);
+}
+
+.x-form-trigger-save {
+    background-image: url(../images/form/trigger-save.png);
+}
+
+.x-form-trigger-add {
+    background-image: url(../images/form/trigger-add.png);
+}
+
+.x-form-trigger-delete {
+    background-image: url(../images/form/trigger-delete.png);
+}
+
+.x-form-trigger-link {
+    background-image: url(../images/form/trigger-link.png);
+}
+
+.x-form-trigger-help {
+    background-image: url(../images/form/trigger-help.gif);
+}
+
+.x-form-trigger-ellipsis {
+    background-image: url(../images/form/trigger-ellipsis.png);
+}
+
+.partkeepr-logo {
+    height: 26px;
+    padding-right: 30px;
+    vertical-align: middle;
+    display:flex;
+    align-items:center;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    background-repeat: no-repeat;
+    background-position:  right;
+    background-image: url(../images/partkeepr-logo.png);
+}
+
+.partkeepr-part-manager-compact {
+    background-position: top left;
+    background-repeat: no-repeat;
+    display:inline-block;
+    width: 73px;
+    height: 43px;
+    line-height: 16px;
+    vertical-align: text-top;
+    background-image: url(../images/config/layout-compact.png);
+}
+
+.partkeepr-part-manager-standard {
+    background-position: top left;
+    background-repeat: no-repeat;
+    display:inline-block;
+    width: 73px;
+    height: 43px;
+    line-height: 16px;
+    vertical-align: text-top;
+
+    background-image: url(../images/config/layout-standard.png);
+}

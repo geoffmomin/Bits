@@ -1,0 +1,51 @@
+_setup:
+    resource: "@PartKeeprSetupBundle/Controller/SetupController.php"
+    type:     annotation
+
+_setup_warmup:
+    resource: "@PartKeeprSetupBundle/Controller/CacheWarmupSetupController.php"
+    type:     annotation
+
+_setup_schema:
+    resource: "@PartKeeprSetupBundle/Controller/SchemaSetupController.php"
+    type:     annotation
+
+_setup_adminuser:
+    resource: "@PartKeeprSetupBundle/Controller/AdminUserSetupController.php"
+    type:     annotation
+
+_setup_migration:
+    resource: "@PartKeeprSetupBundle/Controller/SchemaMigrationSetupController.php"
+    type:     annotation
+
+_setup_part_unit:
+    resource: "@PartKeeprSetupBundle/Controller/PartUnitSetupController.php"
+    type:     annotation
+
+_setup_footprint:
+    resource: "@PartKeeprSetupBundle/Controller/FootprintSetupController.php"
+    type:     annotation
+
+_setup_si_prefixes:
+    resource: "@PartKeeprSetupBundle/Controller/SiPrefixSetupController.php"
+    type:     annotation
+
+_setup_units:
+    resource: "@PartKeeprSetupBundle/Controller/UnitSetupController.php"
+    type:     annotation
+
+_setup_manufacturers:
+    resource: "@PartKeeprSetupBundle/Controller/ManufacturerSetupController.php"
+    type:     annotation
+
+_setup_parseconfig:
+    resource: "@PartKeeprSetupBundle/Controller/ExistingConfigParserController.php"
+    type:     annotation
+
+_setup_existingusers:
+    resource: "@PartKeeprSetupBundle/Controller/ExistingUserSetupController.php"
+    type:     annotation
+
+_setup_filemigration:
+    resource: "@PartKeeprSetupBundle/Controller/FileMigrationController.php"
+    type:     annotation

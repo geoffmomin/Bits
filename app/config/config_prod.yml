@@ -1,0 +1,25 @@
+imports:
+    - { resource: config.yml }
+
+#framework:
+#    validation:
+#        cache: apc
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: warning
+            handler:      nested
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/partkeepr.log
+            level: warning
+        console:
+            type:  console

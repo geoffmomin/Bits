@@ -1,0 +1,65 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        enabled: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+dunglas_api:
+    cache: false
+
+doctrine:
+    dbal:
+        default_connection: %testdb%
+        connections:
+            sqlite:
+                driver:   pdo_sqlite
+                path:     %kernel.cache_dir%/test.db
+                charset:    UTF8
+            mysql:
+                driver:     pdo_mysql
+                dbname:     partkeepr_test
+                host:       localhost
+                user:       travis
+                charset:    UTF8
+            pgsql:
+                driver:     pdo_pgsql
+                dbname:     partkeepr_test
+                host:       localhost
+                user:       travis
+                charset:    UTF8
+    orm:
+        metadata_cache_driver: array
+        query_cache_driver: array
+        result_cache_driver: array
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        %testdb%:
+            tree: true
+
+liip_functional_test:
+    cache_sqlite_db: true
+    authentication:
+        username: "admin"
+        password: "admin"
+
+security:
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==
+                        roles: 'ROLE_ADMIN'
+
+parameters:
+    partkeepr.parts.internalpartnumberunique: true

@@ -1,0 +1,160 @@
+Meter:
+  symbol: m
+  prefixes:
+    - nano
+    - milli
+    - micro
+    - centi
+    - deci
+    - kilo
+    - "-"
+Gram:
+  symbol: g
+  prefixes:
+    - kilo
+    - milli
+    - "-"
+Second:
+  symbol: s
+  prefixes:
+    - milli
+    - "-"
+Kelvin:
+  symbol: K
+  prefixes:
+    - "-"
+Mol:
+  symbol: mol
+  prefixes:
+    - "-"
+Candela:
+  symbol: cd
+  prefixes:
+    - milli
+Ampere:
+  symbol: A 
+  prefixes:
+    - kilo
+    - micro
+    - "-"
+    - milli
+    - nano
+    - pico
+Ohm:
+  symbol: Ω
+  prefixes:
+    - kilo
+    - milli
+    - micro
+    - "-"
+    - giga
+    - tera
+Volt:
+  symbol: V
+  prefixes:
+    - milli
+    - "-"
+    - kilo
+Hertz:
+  symbol: Hz
+  prefixes:
+    - kilo
+    - milli
+    - "-"
+    - giga
+    - tera
+Newton:
+  symbol: N
+  prefixes:
+    - kilo
+    - "-"
+Pascal:
+  symbol: Pa
+  prefixes:
+    - milli
+    - "-"
+    - kilo
+Joule:
+  symbol: J
+  prefixes:
+    - milli
+    - "-"
+    - kilo
+    - micro
+Watt:
+  symbol: W
+  prefixes:
+    - kilo
+    - milli
+    - "-"
+    - giga
+    - mega
+    - micro
+Coulomb:
+  symbol: C
+  prefixes:
+    - kilo
+    - "-"
+Farad:
+  symbol: F
+  prefixes:
+    - milli
+    - pico
+    - "-"
+    - nano
+    - micro
+Siemens:
+  symbol: S
+  prefixes:
+    - milli
+    - "-"
+Weber:
+  symbol: Wb
+  prefixes:
+    - "-"
+Tesla:
+  symbol: T
+  prefixes:
+    - "-"
+Henry:
+  symbol: H
+  prefixes:
+    - milli
+    - micro
+    - "-"
+Celsius:
+  symbol: °C
+  prefixes:
+    - "-"
+Lumen:
+  symbol: lm
+  prefixes:
+    - "-"
+Lux:
+  symbol: lx
+  prefixes:
+    - "-"
+Becquerel:
+  symbol: Bq
+  prefixes:
+    - "-"
+Gray:
+  symbol: Gy
+  prefixes:
+    - "-"
+Sievert:
+  symbol: Sv
+  prefixes:
+    - milli
+    - "-"
+    - micro
+Katal:
+  symbol: kat
+  prefixes:
+    - "-"
+Ampere Hour:
+  symbol: Ah
+  prefixes:
+    - milli
+    - "-"
+    - kilo
