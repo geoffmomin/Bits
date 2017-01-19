@@ -199,6 +199,7 @@ Ext.define('PartKeepr.PartEditor', {
                                 });
                             }
                         },
+                        itemId: 'idField',
                         name: '@id',
                         fieldStyle: {
                             color: "blue",
@@ -329,7 +330,14 @@ Ext.define('PartKeepr.PartEditor', {
         this.callParent();
 
         this.on("itemSave", this.onItemSave, this);
+        this.down("#idField").on("beforedestroy", this.onBeforeDestroy, this.down("#idField"));
 
+    },
+    /**
+     * Unregisters the quick tip immediately prior destroying
+     */
+    onBeforeDestroy: function (field) {
+        Ext.QuickTips.unregister(field.getEl());
     },
     /**
      * Cleans up the record prior saving.
